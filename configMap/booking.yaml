@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: booking-config
+data:
+  DB: booking
+  DB_REPLS: rs1
+  DB_SERVERS: "mongodb:27017"
+  PORT: "3000"
