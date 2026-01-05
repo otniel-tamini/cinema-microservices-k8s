@@ -1,10 +1,10 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: cinema-catalog-service
+  name: movies-service
 spec:
   selector:
-    app: cinema-catalog-service
+    app: movies-service
   type: ClusterIP
   ports:
     - port: 3000

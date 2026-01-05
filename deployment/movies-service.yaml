@@ -1,28 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: cinema-catalog-service
+  name: movies-service
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: cinema-catalog-service
+      app: movies-service
   template:
     metadata:
       labels:
-        app: cinema-catalog-service
+        app: movies-service
     spec:
       containers:
-      - name: cinema-catalog-service
-        image: <ton-registry>/cinema-catalog-service:latest
+      - name: movies-service
+        image: otniel217/movies-service:1.0
         workingDir: /home/nupp/app
         ports:
         - containerPort: 3000
-        envFrom:
-        - configMapRef:
-            name: cinema-catalog-config
         command: ["dumb-init", "npm", "start"]
         securityContext:
-          runAsUser: 1000
-          runAsGroup: 1000
+          runAsNonRoot: true
           allowPrivilegeEscalation: false

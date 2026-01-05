@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
       - name: cinema-catalog-service
-        image: <ton-registry>/cinema-catalog-service:latest
+        image: otniel217/cinema-catalog-service:1.0
         workingDir: /home/nupp/app
         ports:
         - containerPort: 3000

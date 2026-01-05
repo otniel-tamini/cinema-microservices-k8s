@@ -1,28 +1,24 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: payment-service
+  name: api-gateway
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: payment-service
+      app: api-gateway
   template:
     metadata:
       labels:
-        app: payment-service
+        app: api-gateway
     spec:
       containers:
-      - name: payment-service
-        image: <ton-registry>/payment-service:latest
+      - name: api-gateway
+        image: otniel217/api-gateway-service:1.0
         workingDir: /home/nupp/app
         ports:
-        - containerPort: 3000
+        - containerPort: 8080
         envFrom:
         - configMapRef:
-            name: payment-service-config
+            name: api-gateway-config
         command: ["dumb-init", "npm", "start"]
-        securityContext:
-          runAsUser: 1000
-          runAsGroup: 1000
-          allowPrivilegeEscalation: false
