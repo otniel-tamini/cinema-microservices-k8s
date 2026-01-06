@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: movie-catalog-service
-          image: otniel217/simples-k8s-springboot:movie-catalog-server-latest
+          image: otniel217/simples-k8s-springboot:movie-catalog-service-latest
           ports:
             - containerPort: 8081
           env:
