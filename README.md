@@ -286,12 +286,12 @@ kubectl apply -f - <<EOF
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: cinema-microservices
+  name: spring-microservices
   namespace: argocd
 spec:
   project: default
   source:
-    repoURL: https://github.com/your-username/cinema-microservices-k8s.git
+    repoURL: https://github.com/your-username/spring-microservices-k8s.git
     targetRevision: main
     path: k8s
   destination:
