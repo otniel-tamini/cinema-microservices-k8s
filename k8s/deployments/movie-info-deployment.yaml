@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-info-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: movie-info-service
+  template:
+    metadata:
+      labels:
+        app: movie-info-service
+    spec:
+      containers:
+        - name: movie-info-service
+          image: otniel217/simples-k8s-springboot:movie-info-service-latest
+          ports:
+            - containerPort: 8082
+          env:
+            - name: SPRING_APPLICATION_NAME
+              value: movie-info-service
+            - name: SERVER_PORT
+              value: "8082"
+            - name: API_KEY
+              value: "b0af84324ea41ca39f4311c9156e94e3"
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+              value: http://discovery-service:8761/eureka

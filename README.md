@@ -1,1 +1,0 @@
-# Cinema Microservices on Kubernetes

@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ratings-data-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ratings-data-service
+  template:
+    metadata:
+      labels:
+        app: ratings-data-service
+    spec:
+      containers:
+        - name: ratings-data-service
+          image: otniel217/simples-k8s-springboot:ratings-data-service-latest
+          ports:
+            - containerPort: 8083
+          env:
+            - name: SPRING_APPLICATION_NAME
+              value: ratings-data-service
+            - name: SERVER_PORT
+              value: "8083"
+            - name: EUREKA_CLIENT_SERVICEURL_DEFAULTZONE
+              value: http://discovery-service:8761/eureka
